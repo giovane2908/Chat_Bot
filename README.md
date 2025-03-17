@@ -1,2 +1,2 @@
 # Chat_Bot
- criação de um chat bot do chat GPT  m python
+ criação de um ChatBot do google gemini em python

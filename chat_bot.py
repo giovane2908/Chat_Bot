@@ -1,11 +1,15 @@
 import google.generativeai as genai
+from dotenv import load_dotenv
 
-genai.configure(api_key="AIzaSyAIXvjpN9sCcya9upzO-jWb0s26rq2pIpA")
+# Configuração da API
+load_dotenv()
+genai.configure(api_key=os.getenv("Gemini_api_key"))#chave api está guardada em um arquivo .env por segurança
 
 # Lista para armazenar o histórico da conversa
 historico_conversa = []
 
 def enviar_mensagem(mensagem):
+    """Envia uma mensagem para o modelo Gemini AI e mantém o histórico."""
     try:
         modelo = genai.GenerativeModel("gemini-1.5-pro")
 
@@ -21,11 +25,4 @@ def enviar_mensagem(mensagem):
         return resposta.text  
 
     except Exception as e:
-        return f"Erro ao processar a mensagem: {str(e)}"
-
-
-
-
-
-
-
+        return f"⚠️ Erro: {str(e)}"
